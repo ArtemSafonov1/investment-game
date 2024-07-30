@@ -1,0 +1,36 @@
+---
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  Include:
+    - app/**/*.rb
+    - spec/**/*.rb
+    - config/**/*.rb
+    - db/migrate/*.rb
+  NewCops: enable
+  TargetRubyVersion: 3.3.0
+
+Style/Documentation:
+  Enabled: false
+
+Metrics:
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
+    - db/migrate/*.rb
+    - config/environments/*.rb
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
