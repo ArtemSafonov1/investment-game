@@ -70,3 +70,10 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "mutex_m", "~> 0.2.0"
+gem "telegram-bot-ruby", "~> 2.0"
+gem "redis-rails", "~> 5.0"
+gem "dotenv-rails", "~> 3.1"
+gem "tailwindcss-rails", "~> 2.6"
+gem "hotwire-rails", "~> 0.1.3"
