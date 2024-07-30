@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require_relative '../app/middleware/telegram_auth'
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
