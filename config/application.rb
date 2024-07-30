@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
+
+require_relative 'boot'
 require_relative '../app/middleware/telegram_auth'
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require File.expand_path('../config/environment', __dir__)
 require 'telegram/bot'
 
 class TelegramBot
   def initialize
-    # При инициализации важно указать API токен его можно 
+    # При инициализации важно указать API токен его можно
     # получить в тг создав бота с помощью https://t.me/BotFather
     @bot = Telegram::Bot::Client.new(ENV['TOKEN'])
   end
 
   def run
-    # В данном методе мы "ловим" основные типы 
+    # В данном методе мы "ловим" основные типы
     # апдейтов, которые могут прийти к нам от ТГ
     @bot.listen do |update|
       case update
@@ -47,14 +49,14 @@ class TelegramBot
   end
 
   def start_command(message)
-    # Здесь мы вызываем генерацию токена и отправляем 
-    # пользователю сообщение содержащее кнопку с ссылкой на наш 
-    # сервис. Важно отметить, что сгенерированный токен мы кладём в 
+    # Здесь мы вызываем генерацию токена и отправляем
+    # пользователю сообщение содержащее кнопку с ссылкой на наш
+    # сервис. Важно отметить, что сгенерированный токен мы кладём в
     # Редис, чтобы потом произвести аутентификацию пользователя
 
     auth_token = generate_auth_token(message)
     webapp_url = "#{ENV['NGROK_URL']}?tg_token=#{auth_token}"
-    
+
     keyboard = Telegram::Bot::Types::InlineKeyboardMarkup.new(
       inline_keyboard: [
         [
@@ -68,7 +70,7 @@ class TelegramBot
 
     @bot.api.send_message(
       chat_id: message.chat.id,
-      text: "Играть в один клик!",
+      text: 'Играть в один клик!',
       reply_markup: keyboard
     )
   end
@@ -78,7 +80,7 @@ class TelegramBot
   end
 
   def handle_unknown_command(message)
-    @bot.api.send_message(chat_id: message.chat.id, text: "Неизвестная команда.")
+    @bot.api.send_message(chat_id: message.chat.id, text: 'Неизвестная команда.')
   end
 
   def generate_auth_token(message)

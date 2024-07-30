@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class TelegramAuth
   def initialize(app)
     @app = app
   end
 
   def call(env)
-    # Здесь, используя redis мы находим или создаём 
+    # Здесь, используя redis мы находим или создаём
     # по токену пользователя и сохраняем его user_id в сессию
 
     request = Rack::Request.new(env)
@@ -21,11 +23,11 @@ class TelegramAuth
       )
       env['rack.session'][:user_id] = user.id
       REDIS.del(token)
-      return [302, {'Location' => '/'}, []]
+      return [302, { 'Location' => '/' }, []]
     else
-      puts "Some error"
+      puts 'Some error'
     end
-    
+
     @app.call(env)
   end
 end

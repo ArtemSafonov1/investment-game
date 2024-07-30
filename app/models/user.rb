@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_one :market, dependent: :destroy
 
@@ -11,7 +13,7 @@ class User < ApplicationRecord
       false
     end
   end
-  
+
   def sell_tokens(amount_of_dollars, market)
     dollars_to_receive = amount_of_dollars * market.price
     if amount_of_tokens >= amount_of_dollars
@@ -19,7 +21,7 @@ class User < ApplicationRecord
     else
       false
     end
-  end  
+  end
 
   private
 
