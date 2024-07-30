@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_one :market, dependent: :destroy
 
+  after_create :create_market
+
   def buy_tokens(amount_of_dollars, market)
     tokens_to_buy = amount_of_dollars / market.price
     if capital >= amount_of_dollars
