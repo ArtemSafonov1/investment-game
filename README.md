@@ -1,24 +1,24 @@
-# README
+# Ruby Telegram Mini App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+Game that simulates market volatility using a single fictious stock as an example
 
-* Ruby version
+## Sertup environment
 
-* System dependencies
+1. Create a `.env` file in the app root folder and define the following environment variables:
+   ```
+   REDIS_URL = 'redis://localhost:6379/0'
+   TOKEN = 'YOUR_TELEGRAM_TOKEN'
+   NGROK_URL = 'YOUR_NGROK_URL'
+   ```
 
-* Configuration
+2. Run rails project:
+   ```
+   bundle exec rails s
+   ```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. Run telegram bot:
+   ```
+   ruby bot/bot.rb
+   ```
